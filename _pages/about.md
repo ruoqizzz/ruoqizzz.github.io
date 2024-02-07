@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: [Stay Huuuungry Stay Foooolish]
+subtitle: Stay Huuuungry Stay Foooolish
 
 profile:
   align: right
