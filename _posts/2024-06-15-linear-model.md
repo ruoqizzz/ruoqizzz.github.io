@@ -1,18 +1,22 @@
 ---
 layout: post
-title: Linear Models in Recursive System Identification
+title: Recursive Least Squares Derived from Offline Estimation
 date: 2024-06-15 16:05:00
 description: 
 tags: linear_model, recursive_sysid
 categories: control
 ---
 
+An obvious approach from offline estimation to recursive (online) estimation is to take any offline method and modify it. Here we show a method of how to modify the offline least squares to recursive least squares.
+
 ## Linear Difference Equation
 
 
 $$
+\begin{align}
 y(t)+a_1y(t-1) + \dots + a_n y(t-n) = b_1u(t-1)+\dots+b_mu(t-m)+v(t)
 \label{eq:linear}
+\end{align}
 $$
 
 where $$\{u(t)\},\{y(t)\}$$  are input and output signals and $$v(t)$$ is some disturbance of unspecified character. 
@@ -55,7 +59,7 @@ $$
 
 as the prediction of $$y(t)$$ having observed previous inputs and outputs. 
 
-### Offline Identification: The least squares
+## Offline Identification: The least squares
 
 The parameter vector can be estimated from the measurements of $$y(t)$$ and $$\phi(t)$$ with $$t=1,2,\dots,N$. A common way to choose the estimation is to minimize
 
@@ -67,11 +71,13 @@ $$
 with respect to $$\theta$$ and $$\{\alpha_t\}$$ is a sequence of positive numbers allowing to give different weights to different observations. This criterion $$V_N(\theta)$$ is quadratic in $$\theta$$ and thus it can be minimized analytically, 
 
 $$
+\begin{align}
 \hat{\theta}(N) = \left[
 \sum_{1}^N \alpha_t\phi(t)\phi(t)^T
 \right]^{-1}
 \sum_{1}^N \alpha_t\phi(t)y(t),
 \label{eq:offline_ls}
+\end{align}
 $$
 
 where we assume that the inverse exists. It can be written in a recursive fashion. Let
@@ -141,8 +147,7 @@ R(t)&=R(t-1) + \frac{1}{t}[
 \end{align}
 $$
 
-
-### An Equivalent Form: Recursive Least Squares
+## An Equivalent Form: Recursive Least Squares
 
 Equation $$\eqref{eq:offline_rls1}$$ is not that suited for computation since a matrix inverse has to be calculated in each time step. It's more natural to introduce
 
@@ -181,7 +186,6 @@ $$
 L(t)&=\frac{P(t-1)\phi(t)}{1/\alpha_t + \phi^T(t)P(t-1)\phi(t)},\\
 P(t)&=P(t-1)-\frac{P(t-1)\phi(t)\phi^T(t)P(t-1)}{1/\alpha_t + \phi^T(t)P(t-1)\phi(t)}.
 \label{eq:rls}
-
 \end{align}
 $$
 
@@ -242,8 +246,6 @@ According to the law of large numbers, the sum $$\frac{1}{N}\sum_{t=1}^N \alpha_
 
 In both cases, the $$\hat{\theta}(N)$$  approaches to $$\theta_\circ$$ as $$N$$ goes to infinity. 
 
-
-
 ### Interpretations of RLS
 
 $$
@@ -297,5 +299,5 @@ $$
    \right]^{-1}
    $$
    
-   is the inverse of an estimate of the second derivate of the criterion. The updating $$\hat{\theta}(t)$$ is thus updated with the direction of "Newton" and a decaying step size $$\frac{1}{t}$$.
+   is the inverse of an estimate of the second derivate of the criterion. The updating $$\hat{\theta}(t)$$ is thus updated with the direction of "Newton" and a decaying step size $$\frac{1}{t}$$. More can be found in another blog post "Recursive Least Squares Derived from Stochastic Approximation Approach ".
 
