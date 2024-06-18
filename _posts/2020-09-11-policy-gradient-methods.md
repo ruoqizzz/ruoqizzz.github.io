@@ -217,7 +217,7 @@ $$
 
 Main work: combining the DPG with DQN
 
-![DDPG](../assets/images/ddpg-algo.png)
+![DDPG](images/ddpg-algo.png)
 
 ### TD3
 
@@ -248,4 +248,4 @@ Difference from DDPG:
    $$
    
 
-![TD3](../assets/images/TD3.png)
+![TD3](images/TD3.png)

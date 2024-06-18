@@ -40,7 +40,7 @@ where $f(\cdot)$ is the dynamic model of the environment.
 
 
 
-![Open-loop-closed-loop-planning](../assets/Images/model-based/planning.jpg)
+![Open-loop-closed-loop-planning](images/planning.jpg)
 
 From the view of model-based RL, open-loop is more reasonable. If the model is given, then there is no need to interate with environment and the agent can decide which action to take based on the inference. However, the dynamics of model is not perfect in practice and open-loop might cause large accumulated error. Closed-loop planning can fix this erro by the reward at each timestep. 
 
@@ -55,7 +55,7 @@ $$
 
   The most intuitive method is to sample several sequences of actions from action distribution, calculate the reward and choose the action sequence with maximum accumulated rewards.
 
-  ![random shooting method](../assets/Images/model-based/random-sampling-shooting.png)
+  ![random shooting method](images/random-sampling-shooting.png)
 
   Random shooting method based on the sampling and more samples lead to better performance.
 
@@ -63,11 +63,11 @@ $$
 
   Cross-entropy method improve the random shooting method by the way to sample. It model the sample distribution and fit it with the "best" samples.
 
-  ![CEM](../assets/Images/model-based/CEM.jpg)
+  ![CEM](images/CEM.jpg)
 
   In step three, it select *elites* and fit $p(A)$ by them to increase the proabability near them. Gaussians are usually used in CEM and in this situation, $p(A)$ is similar to fit the distribution of rewards.
 
-  ![CEM Gaussian](../assets/Images/model-based/CEM-gaussian.png)
+  ![CEM Gaussian](images/CEM-gaussian.png)
 
 Stochastic optimization methods are simple to implement and fast to run but they are not suitable for tasks with high-dimentional action space. 
 
@@ -89,7 +89,7 @@ where $Q$ is the acculated value of state $s_t$, $N(s_t)$ is the number of visit
 
 Behavior policy is how to judge the value of node $Q$, it could be random policy. Tree policy is the policy to choose the node to explore, for example, the UCT policy.
 
-![MCTS](../assets/Images/model-based/MCTS.jpg)
+![MCTS](images/MCTS.jpg)
 
 ### Trajectory Optimization
 
@@ -101,7 +101,7 @@ min_{u_1,\dots,u_T} c(x_1,u_1)+ c(f(x_1,u_1), u_2)+\dots+c(f(f(\dots)\dots), u_T
 $$
 where $c(\cdot)$ is the cost function and $f(\cdot)$ represents the dynamics. In shooting methods, dynamics only offer the results of planning. If dynamic model of environment is known, we got a optimization problem without constaints. In this situation, there is no constaints on states, thus it is easy to get trajectories with large differences starting from same initial state $s_0$. Also, the first action has enormous influence than the last action, which is difficult to solve.
 
-![shooting](../assets/Images/model-based/shooting.jpg)
+![shooting](images/shooting.jpg)
 
 Collocation methods optimize over actions and states, with constraints, 
 $$
@@ -109,7 +109,7 @@ min_{u_1,\dots,u_T,x_1,\dots,x_T} \sum_{t=1}^T c(x_t, u_t)~~\text{s.t. }x_t=f(x_
 $$
 This adding more constraint so the oscillation is smaller.
 
-![collocation](../assets/Images/model-based/collocation.jpg)
+![collocation](images/collocation.jpg)
 
 #### Linear Quadratic Regulator
 
@@ -133,15 +133,15 @@ This adding more constraint so the oscillation is smaller.
 
 - Algorithm
 
-![LQR](../assets/Images/model-based/LQR.jpg)
+![LQR](images/LQR.jpg)
 
 #### Iterative LQR
 
 In LQR, we supposed the model is locally linear. However, in practice, the model is often non-linear. In iterative LQR, we use the idea of Newton's method. In Newton's methods, the algorithm use both the first-order and second-order derivative to find the next guess point. (Gradient descent use only first-order derivate) as shown in graph below.
 
-![newton-raph](../assets/Images/model-based/newton.jpg)
+![newton-raph](images/newton.jpg)
 
-![newton-raph](../assets/Images/model-based/newton-algo.jpg)
+![newton-raph](images/newton-algo.jpg)
 
 Interative LQR firstly use first-order derivative to approximate the dynamic model, then use second-order derivate to approximate the cost function. 
 $$
@@ -159,7 +159,7 @@ $$
 $$
 where $ \delta x =x_t - \hat{x_t}, \delta u =u_t - \hat{u_t}$. This form is similar to the form in LQR, so we can use the LQR to get the state and action.
 
-![iLQR](../assets/Images/model-based/iLQR.jpg)
+![iLQR](images/iLQR.jpg)
 
 In the forward pass, we still use the nonlinear dynmiacs NOT approximation to get the next state.
 
@@ -170,7 +170,7 @@ In iLQR, the dynamic model is approximated only using first-order derivative but
 $$
 f(x_t,u_u) \approx f(\hat{x_t},\hat{u_t}) + \nabla_{x_t,u_t}f(\hat{x_t},\hat{u_t})\begin{bmatrix} \delta x_t \\ \delta u_t\end{bmatrix}+ \frac{1}{2}\begin{bmatrix} \delta x_t \\ \delta u_t\end{bmatrix}^T \nabla^2_{x_t,u_t}\begin{bmatrix} \delta x_t \\ \delta u_t\end{bmatrix}
 $$
-![Differential-DP](../assets/Images/model-based/DifferentialDP.jpg)
+![Differential-DP](images/DifferentialDP.jpg)
 
 ## Learning Dynamics and Policies
 
@@ -219,12 +219,12 @@ MPC can bed used to replan the action using short horizon. The more Replan is do
 
 Replan algorithm theoratically works well but in pratice, it easily converge to local minima. 
 
-![MBRL-gap](../assets/Images/model-based/performance-gap.jpg)
+![MBRL-gap](images/performance-gap.jpg)
 
 As shown in the graph, the green line is the MBRL Replan 1.5's performance.  It can receive bigger than zero reward but stuck in the local minima while the model-free methods(blue line) based on the model achive much better performance. It might because the planning step in algorithm is overoptimistic by maximizing the reward. For example, in the graph shown below, the plan estimate the reward with the model still have error, then maximzing the reward wrongly. 
 
 
-![MBRL-gap](../assets/Images/model-based/plan-overfit.png)
+![MBRL-gap](images/plan-overfit.png)
 
 This problem can be solved by introducing unvertainty. In the planning step, using mean reward instead of max reward can eliminate over-optimistic.
 
@@ -256,7 +256,7 @@ $$
 
 - Bayesian nerural network
 
-  ![bayesian-NN](../assets/Images/model-based/bayesian.jpg)
+  ![bayesian-NN](images/bayesian.jpg)
 
   As shown in the left of graph, the weights of regular nerual network is some real number while in Bayesian NN, the weights are distribution
 
@@ -268,7 +268,7 @@ $$
   
 - Bootstrap ensembles
 
-  ![ensembles](../assets/Images/model-based/ensembles.jpg)
+  ![ensembles](images/ensembles.jpg)
 
 Model uncertainty can be described by mean of p
 
