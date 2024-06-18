@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Recursive Least Squares Derived from Stochastic Approximation Approach 
-date: 2024-06-15 16:05:00
+date: 2024-06-18 16:05:00
 description: 
 tags: linear_model, recursive_sysid
 categories: control
