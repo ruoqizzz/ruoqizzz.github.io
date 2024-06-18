@@ -12,6 +12,8 @@ nav_order: 5
 * **Robust set point control via RL using P controller, Integrator and Model Ensembles**, ACC 2023: [slide](https://drive.google.com/file/d/11JRklMzBkQbL9oWKqEIdYSeZ4qnGZvtb/view?usp=share_link)
 
 ## Teaching
+* (TA) [Reinforcement Learning](https://www.uu.se/en/study/course?query=1RT747) 2024 Spring 
+
 * (TA) [Programkonstruktion och datastrukturer](https://www.uu.se/utbildning/kursplan?query=47706) 2023 Fall 
 
 * (TA) [Imperative & Object-Oriented Programming Methodology](https://www.uu.se/utbildning/kursplan?query=47707) 2023 Fall
