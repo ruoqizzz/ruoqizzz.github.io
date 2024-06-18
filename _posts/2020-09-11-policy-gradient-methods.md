@@ -1,7 +1,8 @@
 ---
 layout: post
-author: Ruoqi
+title: Policy Gradient Methods
 date: 2020-09-11 12:23:00
+tags: algo
 categories: rl
 ---
 
