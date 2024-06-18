@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Policy Gradient Methods
-date: 2020-09-11 12:23:00
+date: 2020-09-11 12:03:03
+description: 
 tags: algo
 categories: rl
 ---
