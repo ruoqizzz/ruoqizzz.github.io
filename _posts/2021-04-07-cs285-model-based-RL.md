@@ -8,7 +8,6 @@ categories: rl
 
 Notes of course [CS285](http://rail.eecs.berkeley.edu/deeprlcourse/) 
 
-[TOC]
 
 # Model-based Reinforcement Learning
 
