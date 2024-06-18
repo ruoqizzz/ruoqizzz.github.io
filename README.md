@@ -456,8 +456,8 @@ If you have a different question, please ask using [Discussions](https://github.
 5. **Q:** Atom feed doesn't work. Why?
    <br>
    **A:** Make sure to correctly specify the `url` and `baseurl` paths in `_config.yml`.
-  RSS Feed plugin works with these correctly set up fields: `title`, `url`, `description` and `author`.
-  Make sure to fill them in an appropriate way and try again.
+    RSS Feed plugin works with these correctly set up fields: `title`, `url`, `description` and `author`.
+    Make sure to fill them in an appropriate way and try again.
 
 6. **Q:** My site doesn't work when I enable `related_blog_posts`. Why? <br>
    **A:** This is probably due to the [classifier reborn](https://github.com/jekyll/classifier-reborn) plugin, which is used to calculate
