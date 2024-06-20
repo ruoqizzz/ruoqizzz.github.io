@@ -40,7 +40,7 @@ $$
 \phi^T(t)=\begin{bmatrix}
 -y(t-1) &\dots -y(t-n)&u(t-1)&\dots 
 u(t-m)
-\end{bmatrix}^T
+\end{bmatrix}
 $$
 
 Then, $$~\eqref{eq:linear}$$ can be rewritten as 
