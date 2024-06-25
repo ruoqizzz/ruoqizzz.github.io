@@ -20,7 +20,7 @@ nav_order: 5
 
 * (TA) [Reinforcement Learning](https://www.uu.se/en/study/course?query=1RT747) 2023 Spring 
 
-* (TA) [Imperative & Object-Oriented Programming Methodology](https://www.uu.se/utbildning/kursplan?query=47706) 2022 Fall 
+* (TA) [Programkonstruktion och datastrukturer](https://www.uu.se/utbildning/kursplan?query=47706) 2022 Fall 
 
 * (TA) [Imperative & Object-Oriented Programming Methodology](https://www.uu.se/utbildning/kursplan?query=47707) 2022 Fall
 
