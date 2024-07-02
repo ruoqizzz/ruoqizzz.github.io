@@ -30,8 +30,7 @@ exist for all $$0\leq j\leq n$$. The block matrix $$R_m$$ whose $$i,k$$ entry is
 
 ### Models
 
-A model is a link between the past oservations and the unknown future. At time $$t-1$$, with the observations, the input-output data $$z^{t-1}=[y(t-1)^T, u(t-1)^T]^T$$, it is possible to predict the output at time $$t$$ with a model,
-
+A model is a link between the past oservations and the unknown future. At time $$t-1$$, with the observations, the input-output data $$z(t) = \begin{pmatrix} y(t) \\ u(t) \end{pmatrix}, (z^t = (z(0) \ldots z(t))$$, it is possible to predict the output at time $$t$$ with a model,
 $$
 \hat{y}(t\vert \theta)=g_\mathscr{M}(\theta;t,z^{t-1})
 $$
@@ -117,7 +116,7 @@ $$
 \end{pmatrix}
 $$
 
-where $$\text{col} A$$ here means a column vector constructed from the matrix $$A$$ by stacking its columns under each other. Similarly, we can introduce the output vector
+where $$\text{col} A$$ here, it means a column vector constructed from the matrix $$A$$ by stacking its columns under each other. Similarly, we can introduce the output vector
 
 $$
 \begin{pmatrix}\hat{y}(t\vert \theta)\\
@@ -144,7 +143,7 @@ A(\theta) = \begin{pmatrix}
 0 & \mathscr{F}(\theta) & \cdots & 0 \\
 \vdots & \vdots & \ddots & \vdots \\
 0 & 0 & \cdots & \mathscr{F}(\theta)
-\end{pmatrix}?????
+\end{pmatrix}
 $$
 
 
