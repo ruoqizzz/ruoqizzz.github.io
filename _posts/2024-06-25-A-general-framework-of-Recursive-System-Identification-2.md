@@ -92,7 +92,7 @@ $$
 \begin{align}
 \hat{\theta}(t)=\hat{\theta}(t-1) + \alpha(t)
 R^{-1}
-\psi(t,\hat{\theta}(t-1)\Lambda^{-1}\varepsilon(t,\hat{\theta}(t-1)).\
+\psi(t,\hat{\theta}(t-1)\Lambda^{-1}\varepsilon(t,\hat{\theta}(t-1)).
 \label{eq:stochastic_newton_theta}
 \end{align}
 $$
