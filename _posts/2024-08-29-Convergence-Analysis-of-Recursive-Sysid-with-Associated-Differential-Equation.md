@@ -16,46 +16,46 @@ x(t) = x (t-1) + \alpha Q(t, x(t-1),\phi(t) )\\
 $$
 with assumptions
 
-**C1:** The function $ Q(t, x, \varphi) $ is Lipschitz continuous in $ x $ and $ \varphi $ in any neighborhood of $ (\bar{x}, \bar{\varphi}) $, where $ \bar{x} \in D_R $ and $ \bar{\varphi} $ is arbitrary:
+**C1:** The function $$ Q(t, x, \varphi) $$ is Lipschitz continuous in $$ x $$ and $$ \varphi $$ in any neighborhood of $$ (\bar{x}, \bar{\varphi}) $, where $$ \bar{x} \in D_R $$ and $$ \bar{\varphi} $$ is arbitrary:
 $$
 |Q(t, x_1, \varphi_1) - Q(t, x_2, \varphi_2)| \leq K(\bar{x}, \bar{\varphi}, \rho, v)\left[|x_1 - x_2| + |\varphi_1 - \varphi_2|\right]
 \label{eq:recursive_proof}
 $$
-for $ |x_i - \bar{x}| \leq \rho $, $ |\varphi_i - \bar{\varphi}| \leq v $,
+for $$ |x_i - \bar{x}| \leq \rho $, $$ |\varphi_i - \bar{\varphi}| \leq v $,
 
-where $ \rho = \rho(\bar{x}) > 0 $, $ v = v(\bar{\varphi}) > 0 $. The Lipschitz constant $ K $ may thus depend on the neighborhood.
+where $$ \rho = \rho(\bar{x}) > 0 $, $$ v = v(\bar{\varphi}) > 0 $. The Lipschitz constant $$ K $$ may thus depend on the neighborhood.
 
-**C2:** The matrix functions $ A(x) $ and $ B(x) $ are Lipschitz continuous in $ x $ for $ x \in D_R $.
+**C2:** The matrix functions $$ A(x) $$ and $$ B(x) $$ are Lipschitz continuous in $$ x $$ for $$ x \in D_R $.
 
-**C3:** The sequence $ \{e(t)\} $ is such that
+**C3:** The sequence $$ \{e(t)\} $$ is such that
 $$
 \sum_{k=1}^{t} \beta(t, k) Q(k, \bar{x}, \bar{\varphi}(k, \bar{x})) \to f(\bar{x}) \text{ as } t \to \infty \text{ for all } \bar{x} \in D_R.
 $$
-Here $ \beta(t, k) $ are the weights corresponding to $ \{ \alpha(t) \} $ such that
+Here $$ \beta(t, k) $$ are the weights corresponding to $$ \{ \alpha(t) \} $$ such that
 $$
 \bar{\beta}(t, k) &= \prod_{i=k}^{t}\frac{\alpha(i-1)}{\alpha(i)}[1-\alpha(i)]\\
 &=\frac{\alpha(k-1)}{\alpha(t)}\prod_{i=k}^{t}[1-\alpha(i)]
 &\text{the normalized  mecumulative effect of the past}\\
 \beta(t, k) &= \alpha(t)\bar{\beta}(t, k)
 $$
-and $ \varphi(t, \bar{x}) $ is defined by
+and $$ \varphi(t, \bar{x}) $$ is defined by
 $$
 \varphi(t, \bar{x}) = A(\bar{x}) \varphi(t-1, \bar{x}) + B(\bar{x}) e(t), \quad \varphi(0, \bar{x}) = 0.
 $$
 
-**C4:** For all $ x \in D_R $ we have, for **some** $ C(\bar{x}, \lambda, c) $,
+**C4:** For all $$ x \in D_R $$ we have, for **some** $$ C(\bar{x}, \lambda, c) $,
 $$
 \sum_{k=1}^{t} \beta(t, k)[1 + v(k, \lambda, c)] \cdot K(\bar{x}, \varphi(k, \bar{x}), \rho(\bar{x}), v(k, \lambda, c)) \to C(\bar{x}, \lambda, c) < \infty \text{ as } t \to \infty.
 $$
-Here $ \lambda $ is the maximum eigenvalue norm of $ A(\bar{x}) $, $ v(t, \lambda, c) $ is defined by
+Here $$ \lambda $$ is the maximum eigenvalue norm of $$ A(\bar{x}) $, $$ v(t, \lambda, c) $$ is defined by
 $$
 v(t, \lambda, c) \triangleq c \sum_{k=1}^{t} \lambda^{t-k} |e(k)|,
 $$
-and $ K $ is the Lipschitz constant defined in C1.
+and $$ K $$ is the Lipschitz constant defined in C1.
 
-**C5:** $ \sum_{t=1}^{\infty} \alpha(t) = \infty $.
+**C5:** $$ \sum_{t=1}^{\infty} \alpha(t) = \infty $.
 
-**C6:** $ \alpha(t) \to 0 \text{ as } t \to \infty $.
+**C6:** $$ \alpha(t) \to 0 \text{ as } t \to \infty $.
 
 **Interpretation of C1 and C2:** The function is smooth such that a small changes in $x$ or $\phi$ will not give a big changes in $Q,A,B$. 
 
@@ -114,13 +114,13 @@ $$
    - For C1,$K(x, \varphi, \rho, v) $can be taken as 1.
 
 **C3**:
-   - In C3, it is found that $ \varphi(t, x) = e(t) $ and that $ \beta(t, k) = \frac{1}{t} $ for $ \alpha(t) = \frac{1}{t} $.
+   - In C3, it is found that $$ \varphi(t, x) = e(t) $$ and that $$ \beta(t, k) = \frac{1}{t} $$ for $$ \alpha(t) = \frac{1}{t} $.
 
    - The condition for convergence then reads:
      $$
      \frac{1}{t} \sum_{k=1}^{t} [e(k) - x] \text{ should converge.}
      $$
-     This is satisfied if the sequence $ \{e(t)\} $ is such that:
+     This is satisfied if the sequence $$ \{e(t)\} $$ is such that:
      $$
      \frac{1}{t} \sum_{k=1}^{t} e(k) \to m \text{ as } t \to \infty.
      $$
@@ -128,15 +128,15 @@ $$
 
 **C4**:
 
-- For C4, since $ A(x) = 0 $, the maximum eigenvalue $ \lambda $ is also 0, which implies $ v(t, \lambda, c) = 0 $. The condition simplifies to:
+- For C4, since $$ A(x) = 0 $, the maximum eigenvalue $$ \lambda $$ is also 0, which implies $$ v(t, \lambda, c) = 0 $. The condition simplifies to:
    $$
    \sum_{k=1}^{t} \beta(t, k) \to C \text{ as } t \to \infty,
    $$
-   which is satisfied with $ C = 1 $.
+   which is satisfied with $$ C = 1 $.
 
 **C5 and C6**:
 
-   - These conditions are satisfied for $ \gamma(t) = \frac{1}{t} $.
+   - These conditions are satisfied for $$ \gamma(t) = \frac{1}{t} $.
 
 **Differential Equation**
 
@@ -146,10 +146,10 @@ $$
 \dot{x} = m - x,
 $$
 
-which is globally asymptotically stable with $ x = m $ as the stationary point.
+which is globally asymptotically stable with $$ x = m $$ as the stationary point.
 
-We can take a Lyapunov function $ V(x) = \frac{1}{2}(m - x)^2 $, which leads to:
+We can take a Lyapunov function $$ V(x) = \frac{1}{2}(m - x)^2 $, which leads to:
 $$
   V'(x)f(x) = -(m - x)^2,
 $$
-  which is negative for all $ x $. This satisfies the conditions of Theorem 4.1, indicating that $ x(t) $ will tend to $ m $ as $ t $ approaches infinity.
+  which is negative for all $$ x $. This satisfies the conditions of Theorem 4.1, indicating that $$ x(t) $$ will tend to $$ m $$ as $$ t $$ approaches infinity.
