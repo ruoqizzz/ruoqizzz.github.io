@@ -10,10 +10,14 @@ categories: control
 ## A general framework
 
 The model set is defined in general terms as a one-step-ahead predictor $$\hat{y}(t \vert \theta)$$ that depends on the model parameter vector $$\theta$$. This prediction can be formed using a linear finite-dimensional filter acting on the observed input-output data $$\{z(t)\}$$
+
 $$
+
 \phi(t+1, \theta) = \mathscr{F}(\theta)\phi(t,\theta) + \mathscr{G}(\theta)z(t)\\
 \hat{y}(t\vert \theta) = \mathscr{H}(\theta)\phi(t,\theta).
+
 $$
+
 There are some particular explaples of model sets
 
 - Linear Regression Models
@@ -35,7 +39,9 @@ There are some particular explaples of model sets
 
 
 For the general form, the gradient of $$\hat{y}(t \vert \theta)$$ w.r.t $$\theta$$, denoted by $$\psi(t,\theta)$$ can be computed by means of 
+
 $$
+
 \begin{align}
 \label{eq:quad_criterion_with_general_form:start}
 &\varepsilon(t) = y(t)-\hat{y}(t) \\
@@ -48,7 +54,9 @@ $$
    \end{pmatrix} = C(\hat{\theta}(t-1)) \xi(t).
    \label{eq:quad_criterion_with_general_form:end}
 \end{align}
+
 $$
+
 Here $$\{\alpha(t)\}$$ is a sequence of positive scalars, $$D_\mathscr{M}$$ is the projection into the stable model region. $$R(t)$$ is a positive definite matrix that modefies the seasrch direction. For example, there are two common choices,
 
 - Gauss-Newton direction
@@ -73,17 +81,29 @@ The idea between the general form and its update rule is simple
 > Derive an expression to show how the prediction $$ \hat{y}(t \mid \theta)$$ depends on the model parameters. Then, derive an expression for the gradient $$ \psi(t, \theta)$$ of $$ \hat{y}(t \mid \theta)$$ with respect to $$ \theta$$. These expressions will result in filters that depend on $$ \theta$$ and utilize observed data as inputs. Subsequently, $$ \hat{y}(t)$$ and $$ \psi(t)$$ are obtained from these expressions by replacing past values $$ \hat{y}(t-k \mid \theta)$$ and $$ \psi(t-k, \theta)$$ with $$ \hat{y}(t-k)$$ and $$ \psi(t-k)$$, respectively, and by substituting $$ \theta$$ with its most recent estimate.
 
 The algorithm $$\ref{eq:quad_criterion_with_general_form:start}\sim\ref{eq:quad_criterion_with_general_form:end}$$  aims to minizing the quadratic criterion
+
 $$
+
 \mathbb{E}\frac{1}{2}\varepsilon(t,\theta)\Lambda_0 \varepsilon(t,\theta)
+
 $$
+
 where $$\Lambda_0$$ is the covariance matrix of the prediction errors. If we instead aim at minimizing the general criterion
+
 $$
+
 \mathbb{E} l(\varepsilon(t,\theta)),
+
 $$
+
 the only difference is that $$\hat{\Lambda}^{-1}(t)\varepsilon(t)$$ must be repaced by $$l_\varepsilon^T(\varepsilon(t))$$, then the updated version is 
+
 $$
+
 \hat{\theta}(t) = \left [\hat{\theta}(t-1) + \alpha(t) R^{-1}(t) \psi(t) l_\varepsilon^T(\varepsilon(t))\right ]_{D_\mathscr{M}}
+
 $$
+
 
 
 ## Users choice
