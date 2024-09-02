@@ -66,10 +66,12 @@ where $$\theta^*$ denotes the convergence value. This result implies that as mor
 If the true system is in the model set and $$\theta^*=\theta_\circ$$ then the prediction errors $$\{\varepsilon(t,\theta_\circ)\}$$ is a sequence of indenpendent random vectors each of zero mean and covariance matrix $$\Lambda_\circ$ and with recursive algorithms used, we have
 
 $$
+\begin{align}
 R^{-1}(t)\rightarrow P = \left[
 \bar{\mathbb{E}}\psi(t,\theta_\circ)\Lambda_\circ\psi(t,\theta_\circ)^T
 \right]^{-1}~~~~w.p.1.\text{ as }t\rightarrow\infty,
 \label{eq:RPEM_convergence_R}
+\end{align}
 $$
 
 where $$R(t)$$ is the matrix in the recursive Gauss-Newton algorithm and $$P$$ is the asymptotic covariance matrix.
@@ -145,23 +147,28 @@ $$
 provided the input is general enough. <span style="color:red"> WHY?</span>
 
 This condition can be interpreted as a measure of how good an approximation it is to replace $$\psi(t)$$ by $$\phi(t)$$ close to $$\hat{\theta}(t) = \theta_\circ$.  It can also be rewritten as 
+
 $$
 \text{Re}\left[\frac{1}{C_\circ(e^{i\omega})}-\frac{1}{2}\right]>0~~\forall \omega,
 $$
+
 which is often expressed as "the filter $$\frac{1}{C_\circ(q^{-1})}-\frac{1}{2}$ is strictly positive real."
 
 **Proof:**
 
 $$
-\text{Re}\left[\frac{1}{z}-\frac{1}{2}\right]>0 \rightleftharpoons \frac{2\text{Re }(z) -\vert z\vert^2}{\vert z\vert^2}>0  \rightleftharpoons 2\text{Re }(z) >\vert z\vert^2,\\
+\begin{align}\text{Re}\left[\frac{1}{z}-\frac{1}{2}\right]>0 \rightleftharpoons \frac{2\text{Re }(z) -\vert z\vert^2}{\vert z\vert^2}>0  \rightleftharpoons 2\text{Re }(z) >\vert z\vert^2,\\
 \vert z - 1\vert < 1 \rightleftharpoons (z-1)(\bar{z}-1)<1 \rightleftharpoons \vert z\vert^2-2\text{Re}(z) + 1< 1 \rightleftharpoons \vert Z(e^{i\omega})-1 \vert < 1.
+\end{align}
 $$
 
 While the aforementioned conditions are *sufficient* for convergence, it is also known that PLR algorithms may not converge. In fact, if
 
 $$
+\begin{align}
 \text{Re} C_\circ(e^{i\omega})>0~~\forall \omega
 \label{eq:reC}
+\end{align}
 $$
 
 does not hold, we can always an A-polynomial, B-polynomial and a input signal such that the probability that $$\hat{\theta}(t)$$ converges to the desired value $$\theta_\circ$$ is zero. This means that as a condition on C-polynomial alone equation $$\eqref{eq:reC}$$ is necessary to assure convergence. 
@@ -211,8 +218,10 @@ $$
 Then we can rewrite $$~\eqref{eq:linear_diff}$$ as
 
 $$
+\begin{align}
 y(t)=\theta^T\phi(t)+v(t)
 \label{eq:linear_phi}
+\begin{align}
 $$
 
 Therefore, in order to obtain a sequence of estimates that converges to $$\theta_\circ$$ as $$t$$ approahces infinity, we should instead solve 

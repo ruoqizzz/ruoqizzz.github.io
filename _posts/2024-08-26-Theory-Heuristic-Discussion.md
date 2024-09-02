@@ -79,9 +79,11 @@ $$
 Which can be written recursively as 
 
 $$
- &\xi (t+1,\bar{\theta}) = A(\bar{\theta})  \xi (t,\bar{\theta})+B(\bar{\theta})z(t),\\
+\begin{aligned}
+&\xi (t+1,\bar{\theta}) = A(\bar{\theta})  \xi (t,\bar{\theta})+B(\bar{\theta})z(t),\\
  &\xi (0,\bar{\theta})=0.
 \label{xi_theta_bar}
+\end{aligned}
 $$
 
 As a consequence we also have
@@ -106,24 +108,30 @@ $$
 When $$\hat{\theta}(t)$$ is close to $$\bar{\theta}$$ and $$R(t)$$ is close to $$\bar{R}$$ and $$t$$ is large we can consequentily use the approximation $$\eqref{eq:approximation}$$ to conclude that 
 
 $$
+\begin{aligned}
 &\hat{\theta}(t) \approx \hat{\theta}(t-1) + \alpha(t) \bar{R}^{-1}(t) \eta(t, \bar{\theta}) \Lambda^{-1} \varepsilon(t,\bar{\theta}), \\
 &R(t) = R(t-1) + \alpha(t)\left [\eta(t,\bar{\theta})\Lambda^{-1}(t)\eta^T(t,\bar{\theta}) - \bar{R}\right]\\
+\end{aligned}
 $$
 
 Introduce the expected values
 
 $$
+\begin{aligned}
 f(\bar{\theta}) \triangleq \mathbb{E}\eta(t, \bar{\theta}) \Lambda^{-1} \varepsilon(t,\bar{\theta}),\\
 G(\bar{\theta}) \triangleq \mathbb{E}\eta(t, \bar{\theta}) \Lambda^{-1} \eta^T(t,\bar{\theta})
 \label{eq:f_G}
+\end{aligned}
 $$
 
 where expectation is over $$z^t$$. Since $$t$$ is large, we have neglected the transients in $$\eqref{xi_theta_bar}$$ and the RHS of $$\eqref{eq:f_G}$$ to be time-invariant. We thus have
 
 $$
+\begin{aligned}
 &\hat{\theta}(t) \approx \hat{\theta}(t-1) + \alpha(t) \bar{R}^{-1}(t) f(\bar{\theta}) + \alpha(t) v(t), \\
 &R(t) \approx R(t-1) + \alpha(t)\left [G(\bar{\theta}) - \bar{R}\right] + \alpha(t)w(t)
 \label{eq_theta_R_approx}
+\end{aligned}
 $$
 
 where $$\{v(t)\}$$ and  $$\{w(t)\}$$ are zero-mean random variables. 
@@ -138,23 +146,29 @@ $$
 If $$\hat{\theta}(t)=\bar{\theta}$$ and $$R(t)=\bar{R}$$, we then have from $$\eqref{eq_theta_R_approx}$$
 
 $$
+\begin{aligned}
 &\theta(t')\approx \bar{\theta} + \Delta\tau \bar{R}^{-1} f(\bar{\theta}) + \sum_{k=t}^{t'}\alpha(k) v(k), \\
 &R(t') \approx \bar{R} +\Delta\tau\left [G(\bar{\theta}) - \bar{R}\right] + \sum_{k=t}^{t'}\alpha(k)w(k).
+\end{aligned}
 $$
 
 Since $$v(k)$$ and $$w(k)$$ have zero means, the contribution forom the third terms of RHS will be an order of magnitude less than those from second terms. Therefore
 
 $$
+\begin{aligned}
 &\theta(t')\approx \bar{\theta} + \Delta\tau \bar{R}^{-1} f(\bar{\theta}) \\
 &R(t') \approx \bar{R} +\Delta\tau\left [G(\bar{\theta}) - \bar{R}\right]
 \label{eq:t'_approx}
+\end{aligned}
 $$
 
 With a change of time scale, according to $$\eqref{eq:delta_tau}$$ such that $$t \leftrightarrow \tau$$ and $$t' \leftrightarrow \tau +\Delta \tau$$, we could regard $$\eqref{eq:t'_approx}$$ as a scheme to solve the differential equation with small $$\Delta \tau$$,
 
 $$
+\begin{aligned}
 &\frac{d}{d\tau}\theta_D(\tau) = \bar{R}^{-1}f(\theta_D(\tau))\\
 &\frac{d}{d\tau}R_D(\tau) =G(\bar{\theta}) - R_D(\tau)
+\end{aligned}
 \label{eq:ODE}
 $$
 

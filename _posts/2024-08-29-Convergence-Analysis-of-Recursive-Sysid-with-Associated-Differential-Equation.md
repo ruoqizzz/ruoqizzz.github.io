@@ -41,10 +41,12 @@ Here $$ \beta(t, k) $$ are the weights corresponding to $$ \{ \alpha(t) \} $$ su
 
 
 $$
+\begin{aligned}
 \bar{\beta}(t, k) &= \prod_{i=k}^{t}\frac{\alpha(i-1)}{\alpha(i)}[1-\alpha(i)]\\
 &=\frac{\alpha(k-1)}{\alpha(t)}\prod_{i=k}^{t}[1-\alpha(i)]
 &\text{the normalized  mecumulative effect of the past}\\
 \beta(t, k) &= \alpha(t)\bar{\beta}(t, k)
+\end{aligned}
 $$
 
 
