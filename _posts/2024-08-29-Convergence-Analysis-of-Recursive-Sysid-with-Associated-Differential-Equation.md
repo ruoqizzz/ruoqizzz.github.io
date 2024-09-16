@@ -12,9 +12,11 @@ Based on heuristic arguments in previous blogs, we describe a link between the r
 Let's study the following algorithms
 
 $$
+\begin{align}
 x(t) = x (t-1) + \alpha Q(t, x(t-1),\phi(t) )\\
 \phi(t) = A( x (t-1)) \phi (t-1) + B( x (t-1)) e(t)
 \label{eq:algo}
+\end{align}
 $$
 
 with assumptions
@@ -27,9 +29,7 @@ $$
 \end{align}
 $$
 
-
 for $$ |x_i - \bar{x}| \leq \rho,  |\varphi_i - \bar{\varphi}| \leq v $$,
-
 where $$ \rho = \rho(\bar{x}) > 0 $$, $$ v = v(\bar{\varphi}) > 0 $$. The Lipschitz constant $$ K $$ may thus depend on the neighborhood.
 
 **C2:** The matrix functions $$ A(x) $$ and $$ B(x) $$ are Lipschitz continuous in $$ x $$ for $$ x \in D_R $$.
@@ -207,10 +207,10 @@ which is negative for all $$ x $$. This satisfies the conditions of Theorem 4.1,
 
 ### Exist issues
 
-- Regulation C1-C4 only holds for $$x\in D_R$$, Outside $$D_R$$ the d.e. is not defined and thus we do not know the behavior of the algorithm.  Thus we must  assume by $$\refeq{eq:x_close_to_DR}$$ that the estimates are inside $$\bar{D} \in D_R$$ infinitely often, so that they will eventually be captured by a trajectory.
+- Regulation C1-C4 only holds for $$x\in D_R$$, Outside $$D_R$$ the d.e. is not defined and thus we do not know the behavior of the algorithm.  Thus we must  assume by $$\eqref{eq:x_close_to_DR}$$ that the estimates are inside $$\bar{D} \in D_R$$ infinitely often, so that they will eventually be captured by a trajectory.
 
 - Lyapunov Function assures the stability of differential equation $$V$$ but it does not necessarily mean that every possible condition will lead to convergence to the equilibrium point. So $$D_R$$ is not necessarily the domain of attraction. 
-- Once out of $$D_R$$, there is no control over the estimate sequence  except from $$\refeq{eq:x_close_to_DR}$$  we know that it might go back to $$D_R$$, but we do not know when and how often this could happen.
+- Once out of $$D_R$$, there is no control over the estimate sequence  except from $$\eqref {eq:x_close_to_DR}$$  we know that it might go back to $$D_R$$, but we do not know when and how often this could happen.
 
 ### Example: Nonlinear System with Multiple Equilibria
 
