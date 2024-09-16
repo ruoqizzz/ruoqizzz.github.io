@@ -14,18 +14,21 @@ Let's study the following algorithms
 $$
 x(t) = x (t-1) + \alpha Q(t, x(t-1),\phi(t) )\\
 \phi(t) = A( x (t-1)) \phi (t-1) + B( x (t-1)) e(t)
+\label{eq:algo}
 $$
 
 with assumptions
 
 **C1:** The function $$ Q(t, x, \varphi) $$ is Lipschitz continuous in $$ x $$ and $$ \varphi $$ in any neighborhood of $$ (\bar{x}, \bar{\varphi}) $$, where $$ \bar{x} \in D_R $$ and $$ \bar{\varphi} $$ is arbitrary:
-
 $$
+\begin{align}
 |Q(t, x_1, \varphi_1) - Q(t, x_2, \varphi_2)| \leq K(\bar{x}, \bar{\varphi}, \rho, v)\left[|x_1 - x_2| + |\varphi_1 - \varphi_2|\right]
 \label{eq:recursive_proof}
+\end{align}
 $$
 
-for $$ |x_i - \bar{x}| \leq \rho $$, $$ |\varphi_i - \bar{\varphi}| \leq v $$,
+
+for $$ |x_i - \bar{x}| \leq \rho,  |\varphi_i - \bar{\varphi}| \leq v $$,
 
 where $$ \rho = \rho(\bar{x}) > 0 $$, $$ v = v(\bar{\varphi}) > 0 $$. The Lipschitz constant $$ K $$ may thus depend on the neighborhood.
 
@@ -87,10 +90,12 @@ in C3 is a weighted average of the term $$\{Q(k,\bar{x},\phi(k,\bar{x}))\}$$. Th
 
 **Interpretation of C4:** The deviations from the average behavior is bounded by bounding the influence of past errors assuming the worst case with maximum eigenvalue.
 
-**Theorem 4.1** Consider the algorithm  $$\eqref{eq:recursive_proof}$$ subject to the conditions C1–C6. Let $$\bar{D}$$ be a closed subset of $$D_R$$. Assume that there is a constant $$C < \infty$$ and a subsequence $$\{t_k\}$$ (that may depend on the particular sequence $$\{e(r)\}$$) such that
-
+**Theorem 4.1** Consider the algorithm  $$\eqref{eq:recursive_proof}$$ subject to the conditions C1–C6. Let $$\bar{D}$$ be a closed subset of $$D_R$$. Assume that there is a constant $$C < \infty$$ and a subsequence $$\{t_k\}$$ (that may depend on the **particular** sequence $$\{e(r)\}$$) such that
 $$
+\begin{align}
 x(t_k) \in \bar{D} \quad \text{and} \quad |\varphi(t_k)| < C.
+\label{eq:x_close_to_DR}
+\end{align}
 $$
 
 Assume also that there exists a twice-differentiable function $$V(x)$$ in $$D_R$$, such that, with $$f(x)$$ given by C3,
@@ -117,6 +122,7 @@ The asymptotic average updating direction for the algorihtm is according to C3 g
 
 $$
 \frac{d}{d\tau}x(\tau) = f(x(\tau))
+\label{eq:de}
 $$
 
 
@@ -196,3 +202,62 @@ $$
 $$
 
 which is negative for all $$ x $$. This satisfies the conditions of Theorem 4.1, indicating that $$ x(t) $$ will tend to $$ m $$ as $$ t $$ approaches infinity.
+
+
+
+### Exist issues
+
+- Regulation C1-C4 only holds for $$x\in D_R$$, Outside $$D_R$$ the d.e. is not defined and thus we do not know the behavior of the algorithm.  Thus we must  assume by $$\refeq{eq:x_close_to_DR}$$ that the estimates are inside $$\bar{D} \in D_R$$ infinitely often, so that they will eventually be captured by a trajectory.
+
+- Lyapunov Function assures the stability of differential equation $$V$$ but it does not necessarily mean that every possible condition will lead to convergence to the equilibrium point. So $$D_R$$ is not necessarily the domain of attraction. 
+- Once out of $$D_R$$, there is no control over the estimate sequence  except from $$\refeq{eq:x_close_to_DR}$$  we know that it might go back to $$D_R$$, but we do not know when and how often this could happen.
+
+### Example: Nonlinear System with Multiple Equilibria
+
+Consider a simple nonlinear system with the following dynamics:
+$$
+\dot{x} = -x(x - a)(x - b)
+$$
+where $$ a $$ and $$ b $$ are constants, with $$ 0 < a < b $$. This system has three equilibrium points:
+- $$ x = 0 $$ (unstable equilibrium),
+- $$ x = a $$ (stable equilibrium),
+- $$ x = b $$ (unstable equilibrium).
+
+Suppose the set $$ D_R $$ corresponds to the region where the system exhibits regular, predictable behavior, and it includes the stable equilibrium point $$ x = a $$. The boundary of $$ D_R $$ could correspond to the unstable equilibrium point $$ x = b $$. If the estimates $$ x(t) $$ are influenced by noise, errors, or model inaccuracies, they might be pushed out of the region of attraction for the stable point $$ x = a $$. For example:
+- If $$ x(t) $$ is near $$ b $$ and experiences a perturbation that pushes it beyond $$ b $$, it might leave $$ D_R $$ (just as it might leave the region between $$ a $$ and $$ b $$ in the example).
+- Once outside $$ D_R $$, the system could move towards an area where the stability conditions no longer apply (similar to how $$ x(t) $$ might move towards $$ x = 0 $$ in the example, where different dynamics govern the behavior).
+
+## Projection Algorithms
+
+To force the estimates to remain inside a compact subset $$\bar{D}$$,
+$$
+\bar{x}(t) = x(t - 1) + \gamma(t) Q(t, x(t - 1), \phi(t)), \\
+x(t) = \begin{cases}
+    \bar{x}(t) & \text{if } \bar{x}(t) \in \bar{D}, \\
+    x(t-1) & \text{if } \bar{x}(t) \notin \bar{D}.
+    \end{cases}
+$$
+**Corollary to Theorem 4.1:**
+
+ It states that under the same assumptions as in Theorem 4.1, one of the following must hold:
+  1. $$x(t) \rightarrow D_c$$ as $$t \rightarrow \infty$$, where $$D_c$$ is a stable set within $$\bar{D}$$.
+  2. $$x(t) \rightarrow \delta \bar{D}$$ as $$t \rightarrow \infty$$, where $$\delta \bar{D}$$ is the boundary of $$\bar{D}$$.
+
+Second situation may only hold if there is a trajectory of the differential equation that leaves $$\bar{D}$$. 
+
+### Results
+
+**Result 4.1 (Theorem 2 in Ljung, 1977b)**
+
+Suppose that the sequence $$ x(t) $$, given by the recursive algorithm $$\eqref{eq:algo}$$ converges to some value $$ x^* $$ with a probability greater than zero. Then, two conditions must hold:
+
+    1. **$$ f(x^*) = 0 $$**: This condition ensures that $$ x^* $$ is a fixed point of the function $$ f(x) $$ defined in condition C3.
+        2. **Eigenvalues of $$ H(x^*) $$**: $$ H(x^*) $$ is defined as the derivative (Jacobian matrix) of $$ f(x) $$ with respect to $$ x $$ evaluated at $$ x^* $$. The condition requires that all the eigenvalues of $$ H(x^*) $$ must lie in the left half of the complex plane ensuring the stability of the equilibrium point $$ x^* $$.
+
+**Result 4.2 (Theorem 3 in Ljung, 1977b)**
+
+The upper bound on the probability that $$ x(t) $$ does not remain in an $$ \epsilon $$-neighborhood of the corresponding trajectory of $$\eqref{eq:de}$$ over the interval from $$ t = t_0 $$ to $$ t = N $$ is 
+$$
+\frac{K}{\epsilon^{4p}} \sum_{j=t_0}^{N} \alpha(j)^p,
+$$
+where $$ K $$ is a constant, $$ \alpha(j) $$ is the learning rate (or step size), and $$ p $$ is a positive exponent.

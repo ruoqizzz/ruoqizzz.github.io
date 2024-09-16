@@ -85,8 +85,8 @@ $$
 \begin{aligned}
 &\xi (t+1,\bar{\theta}) = A(\bar{\theta})  \xi (t,\bar{\theta})+B(\bar{\theta})z(t),\\
  &\xi (0,\bar{\theta})=0.
-\label{xi_theta_bar}
 \end{aligned}
+\label{xi_theta_bar}
 \end{align}
 $$
 
@@ -151,8 +151,10 @@ where $$\{v(t)\}$$ and  $$\{w(t)\}$$ are zero-mean random variables.
 Let $$\Delta\tau$$ be a small number and let $$t, t'$$ be defined by 
 
 $$
+\begin{align}
 \sum_{k=t}^{t'}\alpha(k)=\Delta \tau
 \label{eq:delta_tau}
+\end{align}
 $$
 
 If $$\hat{\theta}(t)=\bar{\theta}$$ and $$R(t)=\bar{R}$$, we then have from $$\eqref{eq_theta_R_approx}$$
@@ -199,8 +201,10 @@ $$
 then for $$t>t_0$$,
 
 $$
+\begin{align}
 \hat{\theta}(t) \approx \theta_D(\tau), R(t_0)\approx R_D(\tau), \sum_{k=1}^{t_0}\alpha(k)= \tau,
 \label{eq:connect_t_tau}
+\end{align}
 $$
 
 which can be interpreted as the solution of $$\hat{\theta}(t)$$ and $$R(t)$$ can be approximiated by the solution of differential equation $$\eqref{eq:ODE}$$. 
