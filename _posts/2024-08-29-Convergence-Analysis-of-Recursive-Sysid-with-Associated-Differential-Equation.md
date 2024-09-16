@@ -12,11 +12,9 @@ Based on heuristic arguments in previous blogs, we describe a link between the r
 Let's study the following algorithms
 
 $$
-\begin{align}
 x(t) = x (t-1) + \alpha Q(t, x(t-1),\phi(t) )\\
 \phi(t) = A( x (t-1)) \phi (t-1) + B( x (t-1)) e(t)
 \label{eq:algo}
-\end{align}
 $$
 
 with assumptions
@@ -121,8 +119,10 @@ which means that there exists a subsequence $$\{t_j\}$$ such that $$x_j$$ tends 
 The asymptotic average updating direction for the algorihtm is according to C3 given by $$f(x)$$, so the corresponding differential equation is 
 
 $$
+\begin{align}
 \frac{d}{d\tau}x(\tau) = f(x(\tau))
 \label{eq:de}
+\end{align}
 $$
 
 
@@ -207,10 +207,10 @@ which is negative for all $$ x $$. This satisfies the conditions of Theorem 4.1,
 
 ### Exist issues
 
-- Regulation C1-C4 only holds for $$x\in D_R$$, Outside $$D_R$$ the d.e. is not defined and thus we do not know the behavior of the algorithm.  Thus we must  assume by $$\eqref{eq:x_close_to_DR}$$ that the estimates are inside $$\bar{D} \in D_R$$ infinitely often, so that they will eventually be captured by a trajectory.
+- Regulation C1-C4 only holds for $$x\in D_R$$, Outside $$D_R$$ the d.e. is not defined and thus we do not know the behavior of the algorithm.  Thus we must  assume by $$\refeq{ eq:x_close_to_DR }$$ that the estimates are inside $$\bar{D} \in D_R$$ infinitely often, so that they will eventually be captured by a trajectory.
 
 - Lyapunov Function assures the stability of differential equation $$V$$ but it does not necessarily mean that every possible condition will lead to convergence to the equilibrium point. So $$D_R$$ is not necessarily the domain of attraction. 
-- Once out of $$D_R$$, there is no control over the estimate sequence  except from $$\eqref {eq:x_close_to_DR}$$  we know that it might go back to $$D_R$$, but we do not know when and how often this could happen.
+- Once out of $$D_R$$, there is no control over the estimate sequence  except from $$\refeq{eq:x_close_to_DR}$$  we know that it might go back to $$D_R$$, but we do not know when and how often this could happen.
 
 ### Example: Nonlinear System with Multiple Equilibria
 
@@ -251,8 +251,8 @@ Second situation may only hold if there is a trajectory of the differential equa
 
 Suppose that the sequence $$ x(t) $$, given by the recursive algorithm $$\eqref{eq:algo}$$ converges to some value $$ x^* $$ with a probability greater than zero. Then, two conditions must hold:
 
-    1. **$$ f(x^*) = 0 $$**: This condition ensures that $$ x^* $$ is a fixed point of the function $$ f(x) $$ defined in condition C3.
-        2. **Eigenvalues of $$ H(x^*) $$**: $$ H(x^*) $$ is defined as the derivative (Jacobian matrix) of $$ f(x) $$ with respect to $$ x $$ evaluated at $$ x^* $$. The condition requires that all the eigenvalues of $$ H(x^*) $$ must lie in the left half of the complex plane ensuring the stability of the equilibrium point $$ x^* $$.
+1. **$$ f(x^*) = 0 $$**: This condition ensures that $$ x^* $$ is a fixed point of the function $$ f(x) $$ defined in condition C3.
+2. **Eigenvalues of $$ H(x^*) $$**: $$ H(x^*) $$ is defined as the derivative (Jacobian matrix) of $$ f(x) $$ with respect to $$ x $$ evaluated at $$ x^* $$. The condition requires that all the eigenvalues of $$ H(x^*) $$ must lie in the left half of the complex plane ensuring the stability of the equilibrium point $$ x^* $$.
 
 **Result 4.2 (Theorem 3 in Ljung, 1977b)**
 
