@@ -10,6 +10,7 @@ categories: control
 Here we consider the basic structure for algorithms related to quadratic criteria
 
 $$
+\begin{align}
 \begin{aligned}
 &\varepsilon(t) = y(t)-\hat{y}(t) \\
 &R(t) = R(t-1) + \alpha(t)[\eta(t)\Lambda^{-1}(t)\eta^T(t) - R(t-1)]\\
@@ -21,6 +22,7 @@ $$
 \end{pmatrix} = C(\hat{\theta}(t)) \xi(t+1).
 \end{aligned}
 \label{eq:general_form}
+\end{align}
 $$
 
 where $$\eta(t)$$ is a vector related to the gradient of the predition $$\hat{y}(t)$$ w.r.t $$\hat{\theta}$$, for exawmple $$\psi, \phi, \zeta$$ discussed before and $$z(t) = \begin{pmatrix} y(t) \\ u(t) \end{pmatrix}$$. 
@@ -79,21 +81,25 @@ $$
 Which can be written recursively as 
 
 $$
+\begin{align}
 \begin{aligned}
 &\xi (t+1,\bar{\theta}) = A(\bar{\theta})  \xi (t,\bar{\theta})+B(\bar{\theta})z(t),\\
  &\xi (0,\bar{\theta})=0.
 \label{xi_theta_bar}
 \end{aligned}
+\end{align}
 $$
 
 As a consequence we also have
 
 $$
+\begin{align}
 \begin{aligned}
 \hat{y}(t) \approx y(t\vert\bar{\theta}), \eta (t)\approx \eta(t,\bar{\theta}),\\
 \varepsilon (t)\approx \varepsilon (t,\bar{\theta})
 \end{aligned}
 \label{eq:approximation}
+\end{align}
 $$
 
 where 
@@ -108,30 +114,36 @@ $$
 When $$\hat{\theta}(t)$$ is close to $$\bar{\theta}$$ and $$R(t)$$ is close to $$\bar{R}$$ and $$t$$ is large we can consequentily use the approximation $$\eqref{eq:approximation}$$ to conclude that 
 
 $$
+\begin{align}
 \begin{aligned}
 &\hat{\theta}(t) \approx \hat{\theta}(t-1) + \alpha(t) \bar{R}^{-1}(t) \eta(t, \bar{\theta}) \Lambda^{-1} \varepsilon(t,\bar{\theta}), \\
 &R(t) = R(t-1) + \alpha(t)\left [\eta(t,\bar{\theta})\Lambda^{-1}(t)\eta^T(t,\bar{\theta}) - \bar{R}\right]\\
 \end{aligned}
+\end{align}
 $$
 
 Introduce the expected values
 
 $$
+\begin{align}
 \begin{aligned}
 f(\bar{\theta}) \triangleq \mathbb{E}\eta(t, \bar{\theta}) \Lambda^{-1} \varepsilon(t,\bar{\theta}),\\
 G(\bar{\theta}) \triangleq \mathbb{E}\eta(t, \bar{\theta}) \Lambda^{-1} \eta^T(t,\bar{\theta})
-\label{eq:f_G}
 \end{aligned}
+\label{eq:f_G}
+\end{align}
 $$
 
 where expectation is over $$z^t$$. Since $$t$$ is large, we have neglected the transients in $$\eqref{xi_theta_bar}$$ and the RHS of $$\eqref{eq:f_G}$$ to be time-invariant. We thus have
 
 $$
+\begin{align}
 \begin{aligned}
 &\hat{\theta}(t) \approx \hat{\theta}(t-1) + \alpha(t) \bar{R}^{-1}(t) f(\bar{\theta}) + \alpha(t) v(t), \\
 &R(t) \approx R(t-1) + \alpha(t)\left [G(\bar{\theta}) - \bar{R}\right] + \alpha(t)w(t)
-\label{eq_theta_R_approx}
 \end{aligned}
+\label{eq_theta_R_approx}
+\end{align}
 $$
 
 where $$\{v(t)\}$$ and  $$\{w(t)\}$$ are zero-mean random variables. 
@@ -146,30 +158,36 @@ $$
 If $$\hat{\theta}(t)=\bar{\theta}$$ and $$R(t)=\bar{R}$$, we then have from $$\eqref{eq_theta_R_approx}$$
 
 $$
+\begin{align}
 \begin{aligned}
 &\theta(t')\approx \bar{\theta} + \Delta\tau \bar{R}^{-1} f(\bar{\theta}) + \sum_{k=t}^{t'}\alpha(k) v(k), \\
 &R(t') \approx \bar{R} +\Delta\tau\left [G(\bar{\theta}) - \bar{R}\right] + \sum_{k=t}^{t'}\alpha(k)w(k).
 \end{aligned}
+\end{align}
 $$
 
 Since $$v(k)$$ and $$w(k)$$ have zero means, the contribution forom the third terms of RHS will be an order of magnitude less than those from second terms. Therefore
 
 $$
+\begin{align}
 \begin{aligned}
 &\theta(t')\approx \bar{\theta} + \Delta\tau \bar{R}^{-1} f(\bar{\theta}) \\
 &R(t') \approx \bar{R} +\Delta\tau\left [G(\bar{\theta}) - \bar{R}\right]
-\label{eq:t'_approx}
 \end{aligned}
+\label{eq:t'_approx}
+\end{align}
 $$
 
 With a change of time scale, according to $$\eqref{eq:delta_tau}$$ such that $$t \leftrightarrow \tau$$ and $$t' \leftrightarrow \tau +\Delta \tau$$, we could regard $$\eqref{eq:t'_approx}$$ as a scheme to solve the differential equation with small $$\Delta \tau$$,
 
 $$
+\begin{align}
 \begin{aligned}
 &\frac{d}{d\tau}\theta_D(\tau) = \bar{R}^{-1}f(\theta_D(\tau))\\
 &\frac{d}{d\tau}R_D(\tau) =G(\bar{\theta}) - R_D(\tau)
 \end{aligned}
 \label{eq:ODE}
+\end{align}
 $$
 
 Here the subscript $$D$$ is used to distinguish the solution of $$\eqref{eq:ODE}$$ from the variables in $$\eqref{eq:general_form}$$. The chain of arguments suggests that if for some large $$t_0$$

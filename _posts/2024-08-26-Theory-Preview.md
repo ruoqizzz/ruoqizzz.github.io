@@ -219,9 +219,11 @@ Then we can rewrite $$~\eqref{eq:linear_diff}$$ as
 
 $$
 \begin{align}
+\begin{aligned}
 y(t)=\theta^T\phi(t)+v(t)
+\end{aligned}
 \label{eq:linear_phi}
-\begin{align}
+\end{align}
 $$
 
 Therefore, in order to obtain a sequence of estimates that converges to $$\theta_\circ$$ as $$t$$ approahces infinity, we should instead solve 
