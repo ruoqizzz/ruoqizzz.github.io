@@ -18,7 +18,7 @@ latest_posts: false  # includes a list of the newest posts
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
-I am a PhD Candidate supervised by [Per Mattsson](https://www.katalog.uu.se/profile/?id=N10-1806) and co-supervised by [Torbjörn Wigren](https://www.katalog.uu.se/profile/?id=N0-536) at Uppsala University. My research focuses on Reinforcement Learning (RL) and Automatic Control, particularly addressing how control could assist RL and uncertainty in RL.
+I am a PhD Candidate supervised by [Per Mattsson](https://www.katalog.uu.se/profile/?id=N10-1806) and co-supervised by [Torbjörn Wigren](https://www.katalog.uu.se/profile/?id=N0-536) at Uppsala University. Beofore my halftime, my research focuses on Reinforcement Learning (RL) and Automatic Control, particularly addressing how control could assist RL and uncertainty in RL. Now I'm more into fiffusion-based generative models in both offeline and offline-to-online RL.
 
 
 

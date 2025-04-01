@@ -3,3 +3,5 @@ robust-PIME: acc.pdf
 observerFF: ff-network.png
 actor-free-cvx: cvx.png
 p-controller: P-CONTROLLER.pdf
+safe-policy-improvement: safe-improve.png
+consistency: consistency.png
